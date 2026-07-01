@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, Search, ShoppingBag, User, X, Phone } from "lucide-react";
+import { Facebook, Heart, Menu, MessageCircle, Phone, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -27,15 +27,7 @@ export function Navbar() {
 
   return (
     <>
-      {/* Top strip */}
-      <div className="hidden bg-dark text-background/80 md:block">
-        <div className="container-luxury flex h-9 items-center justify-between text-xs">
-          <span>সারা বাংলাদেশে হোম ডেলিভারি · ক্যাশ অন ডেলিভারি</span>
-          <a href="tel:01885901184" className="flex items-center gap-1.5 transition hover:text-gold">
-            <Phone size={12} /> 01885-901184
-          </a>
-        </div>
-      </div>
+
 
       <motion.header
         initial={{ y: -20, opacity: 0 }}
