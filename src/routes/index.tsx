@@ -70,16 +70,16 @@ const trustItems = [
 ];
 
 const categories = [
-  { name: "লাক্সারি কার্টেন", count: 48, image: heroImg },
-  { name: "ব্ল্যাকআউট পর্দা", count: 36, image: bedroomImg },
-  { name: "ভেলভেট পর্দা", count: 42, image: curtainImg },
-  { name: "চাইনিজ পর্দা", count: 28, image: catChinese },
-  { name: "উইন্ডো ব্লাইন্ড", count: 24, image: blindsImg },
-  { name: "হসপিটাল পর্দা", count: 18, image: catHospital },
-  { name: "সোফা কভার", count: 32, image: catSofaCover },
-  { name: "ফোম ও লুজ কভার", count: 22, image: cushionsImg },
-  { name: "কুশন কালেকশন", count: 62, image: cushionsImg },
-  { name: "বিছানার চাদর", count: 45, image: catBedsheet },
+  { name: "লাক্সারি কার্টেন", count: 48, image: heroImg, slug: "home-tex" },
+  { name: "ব্ল্যাকআউট পর্দা", count: 36, image: bedroomImg, slug: "blackout" },
+  { name: "ভেলভেট পর্দা", count: 42, image: curtainImg, slug: "velvet" },
+  { name: "চাইনিজ পর্দা", count: 28, image: catChinese, slug: "chinese" },
+  { name: "উইন্ডো ব্লাইন্ড", count: 24, image: blindsImg, slug: "window-blinds" },
+  { name: "হসপিটাল পর্দা", count: 18, image: catHospital, slug: "hospital" },
+  { name: "সোফা কভার", count: 32, image: catSofaCover, slug: "sofa-cover" },
+  { name: "ফোম ও লুজ কভার", count: 22, image: cushionsImg, slug: "foam-cover" },
+  { name: "কুশন কালেকশন", count: 62, image: cushionsImg, slug: "cushion" },
+  { name: "বিছানার চাদর", count: 45, image: catBedsheet, slug: "bedsheet" },
 ];
 
 const collections = [

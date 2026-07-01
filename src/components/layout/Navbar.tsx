@@ -40,7 +40,7 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "sticky top-0 z-50 w-full border-b transition-all duration-500",
+          "relative w-full border-b transition-all duration-500",
           scrolled
             ? "border-border/60 bg-background/95 shadow-luxury backdrop-blur-xl"
             : "border-transparent bg-background/90 shadow-soft-lux backdrop-blur",

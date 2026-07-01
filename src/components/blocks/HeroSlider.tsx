@@ -1,4 +1,5 @@
 "use client";
+import { useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -14,6 +15,7 @@ export interface HeroSlide {
 
 export function HeroSlider({ slides }: { slides: HeroSlide[] }) {
   const [i, setI] = useState(0);
+  const navigate = useNavigate();
   const total = slides.length;
 
   useEffect(() => {
@@ -71,12 +73,13 @@ export function HeroSlider({ slides }: { slides: HeroSlide[] }) {
                 {slide.description}
               </p>
               <div className="mt-3 flex flex-wrap justify-center gap-3">
-                <LuxButton variant="gold" size="lg">
+                <LuxButton variant="gold" size="lg" onClick={() => navigate({ to: "/shop" })}>
                   এখনই অর্ডার করুন <ArrowRight size={16} />
                 </LuxButton>
                 <LuxButton
                   variant="outline"
                   size="lg"
+                  onClick={() => navigate({ to: "/new-collection" })}
                   className="border-background/40 text-background hover:border-gold hover:text-gold"
                 >
                   সব কালেকশন দেখুন
