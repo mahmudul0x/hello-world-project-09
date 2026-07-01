@@ -183,11 +183,16 @@ export function ProductCardPro({ product, onQuickView, index = 0 }: Props) {
             variant="outline"
             size="sm"
             className="w-full text-xs"
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => { e.preventDefault(); addToCart(product); }}
           >
             <ShoppingBag size={13} /> কার্ট
           </LuxButton>
-          <LuxButton variant="primary" size="sm" className="w-full text-xs">
+          <LuxButton
+            variant="primary"
+            size="sm"
+            className="w-full text-xs"
+            onClick={(e) => { e.preventDefault(); addToCart(product); window.location.href = "/checkout"; }}
+          >
             অর্ডার করুন
           </LuxButton>
         </div>
