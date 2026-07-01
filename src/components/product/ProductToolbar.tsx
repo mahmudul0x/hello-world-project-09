@@ -28,8 +28,8 @@ export function ProductToolbar({ count, total, sort, onSort, onOpenFilters }: Pr
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <LayoutGrid size={14} className="text-primary" />
           <span>
-            <span className="font-semibold text-foreground">{count.toLocaleString("bn-BD")}</span>{" "}
-            / {total.toLocaleString("bn-BD")} পণ্য
+            <span className="font-semibold text-foreground">{bnNum(count)}</span>{" "}
+            / {bnNum(total)} পণ্য
           </span>
         </div>
       </div>

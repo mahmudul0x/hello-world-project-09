@@ -229,7 +229,7 @@ function ProductDetailPage() {
                   <Minus size={16} />
                 </button>
                 <span className="grid w-10 place-items-center font-display text-base font-semibold">
-                  {qty.toLocaleString("bn-BD")}
+                  {bnNum(qty)}
                 </span>
                 <button
                   onClick={() => setQty((q) => q + 1)}

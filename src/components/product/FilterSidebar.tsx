@@ -112,8 +112,8 @@ export function FilterSidebar({ value, onChange, onReset, className }: Props) {
               onValueChange={(v) => set({ price: [v[0], v[1]] as [number, number] })}
             />
             <div className="flex items-center justify-between text-xs text-muted-foreground">
-              <span>৳{value.price[0].toLocaleString("bn-BD")}</span>
-              <span>৳{value.price[1].toLocaleString("bn-BD")}</span>
+              <span>৳{bnNum(value.price[0])}</span>
+              <span>৳{bnNum(value.price[1])}</span>
             </div>
           </div>
         </FilterAccordion>
