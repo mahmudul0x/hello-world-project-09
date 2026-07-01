@@ -167,7 +167,7 @@ function make(
     patterns,
     rooms: rms.map((r) => rooms[r]),
     rating: flags.rating ?? 4.8,
-    reviews: flags.reviews ?? Math.floor(40 + Math.random() * 180),
+    reviews: flags.reviews ?? 40 + ((id * 37) % 180),
     inStock: flags.inStock ?? true,
     isNew: flags.isNew,
     isBestSeller: flags.isBestSeller,
