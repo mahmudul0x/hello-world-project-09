@@ -16,7 +16,7 @@ import { ProductCardPro } from "@/components/product/ProductCardPro";
 import { ReviewCard } from "@/components/cards/ReviewCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
-import { bnPrice, getProduct, getRelated, REVIEWS_SEED } from "@/lib/products";
+import { bnNum, bnPrice, getProduct, getRelated, REVIEWS_SEED } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/product/$slug")({

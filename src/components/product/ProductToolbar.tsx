@@ -2,6 +2,7 @@ import { LayoutGrid, SlidersHorizontal } from "lucide-react";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
+import { bnNum } from "@/lib/products";
 
 export type SortKey = "featured" | "new" | "price-asc" | "price-desc" | "rating";
 
