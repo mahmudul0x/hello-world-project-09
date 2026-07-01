@@ -10,21 +10,8 @@ export function FloatingActions() {
       bg: "bg-emerald-500 hover:bg-emerald-600",
       delay: 0,
     },
-    {
-      label: "Messenger",
-      href: "https://m.me/chayalux",
-      icon: Facebook,
-      bg: "bg-blue-500 hover:bg-blue-600",
-      delay: 0.15,
-    },
-    {
-      label: "কল করুন",
-      href: "tel:01885901184",
-      icon: Phone,
-      bg: "bg-primary hover:bg-dark",
-      delay: 0.3,
-    },
   ];
+
   return (
     <div className="pointer-events-none fixed bottom-24 right-4 z-40 flex flex-col gap-3 md:bottom-6 md:right-6">
       {actions.map((a) => (
