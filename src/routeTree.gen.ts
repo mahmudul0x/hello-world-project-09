@@ -30,7 +30,10 @@ import { Route as OrderTrackingIdRouteImport } from './routes/order-tracking.$id
 import { Route as OrderSuccessIdRouteImport } from './routes/order-success.$id'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as AccountWishlistRouteImport } from './routes/account.wishlist'
+import { Route as AccountProfileRouteImport } from './routes/account.profile'
+import { Route as AccountPasswordRouteImport } from './routes/account.password'
 import { Route as AccountOrdersRouteImport } from './routes/account.orders'
+import { Route as AccountAddressesRouteImport } from './routes/account.addresses'
 
 const WishlistRoute = WishlistRouteImport.update({
   id: '/wishlist',
@@ -137,9 +140,24 @@ const AccountWishlistRoute = AccountWishlistRouteImport.update({
   path: '/wishlist',
   getParentRoute: () => AccountRoute,
 } as any)
+const AccountProfileRoute = AccountProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountPasswordRoute = AccountPasswordRouteImport.update({
+  id: '/password',
+  path: '/password',
+  getParentRoute: () => AccountRoute,
+} as any)
 const AccountOrdersRoute = AccountOrdersRouteImport.update({
   id: '/orders',
   path: '/orders',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountAddressesRoute = AccountAddressesRouteImport.update({
+  id: '/addresses',
+  path: '/addresses',
   getParentRoute: () => AccountRoute,
 } as any)
 
@@ -158,7 +176,10 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
+  '/account/addresses': typeof AccountAddressesRoute
   '/account/orders': typeof AccountOrdersRoute
+  '/account/password': typeof AccountPasswordRoute
+  '/account/profile': typeof AccountProfileRoute
   '/account/wishlist': typeof AccountWishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
@@ -181,7 +202,10 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
+  '/account/addresses': typeof AccountAddressesRoute
   '/account/orders': typeof AccountOrdersRoute
+  '/account/password': typeof AccountPasswordRoute
+  '/account/profile': typeof AccountProfileRoute
   '/account/wishlist': typeof AccountWishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
@@ -206,7 +230,10 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
+  '/account/addresses': typeof AccountAddressesRoute
   '/account/orders': typeof AccountOrdersRoute
+  '/account/password': typeof AccountPasswordRoute
+  '/account/profile': typeof AccountProfileRoute
   '/account/wishlist': typeof AccountWishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
@@ -232,7 +259,10 @@ export interface FileRouteTypes {
     | '/search'
     | '/shop'
     | '/wishlist'
+    | '/account/addresses'
     | '/account/orders'
+    | '/account/password'
+    | '/account/profile'
     | '/account/wishlist'
     | '/collections/$slug'
     | '/order-success/$id'
@@ -255,7 +285,10 @@ export interface FileRouteTypes {
     | '/search'
     | '/shop'
     | '/wishlist'
+    | '/account/addresses'
     | '/account/orders'
+    | '/account/password'
+    | '/account/profile'
     | '/account/wishlist'
     | '/collections/$slug'
     | '/order-success/$id'
@@ -279,7 +312,10 @@ export interface FileRouteTypes {
     | '/search'
     | '/shop'
     | '/wishlist'
+    | '/account/addresses'
     | '/account/orders'
+    | '/account/password'
+    | '/account/profile'
     | '/account/wishlist'
     | '/collections/$slug'
     | '/order-success/$id'
@@ -460,6 +496,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccountWishlistRouteImport
       parentRoute: typeof AccountRoute
     }
+    '/account/profile': {
+      id: '/account/profile'
+      path: '/profile'
+      fullPath: '/account/profile'
+      preLoaderRoute: typeof AccountProfileRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/password': {
+      id: '/account/password'
+      path: '/password'
+      fullPath: '/account/password'
+      preLoaderRoute: typeof AccountPasswordRouteImport
+      parentRoute: typeof AccountRoute
+    }
     '/account/orders': {
       id: '/account/orders'
       path: '/orders'
@@ -467,17 +517,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccountOrdersRouteImport
       parentRoute: typeof AccountRoute
     }
+    '/account/addresses': {
+      id: '/account/addresses'
+      path: '/addresses'
+      fullPath: '/account/addresses'
+      preLoaderRoute: typeof AccountAddressesRouteImport
+      parentRoute: typeof AccountRoute
+    }
   }
 }
 
 interface AccountRouteChildren {
+  AccountAddressesRoute: typeof AccountAddressesRoute
   AccountOrdersRoute: typeof AccountOrdersRoute
+  AccountPasswordRoute: typeof AccountPasswordRoute
+  AccountProfileRoute: typeof AccountProfileRoute
   AccountWishlistRoute: typeof AccountWishlistRoute
   AccountIndexRoute: typeof AccountIndexRoute
 }
 
 const AccountRouteChildren: AccountRouteChildren = {
+  AccountAddressesRoute: AccountAddressesRoute,
   AccountOrdersRoute: AccountOrdersRoute,
+  AccountPasswordRoute: AccountPasswordRoute,
+  AccountProfileRoute: AccountProfileRoute,
   AccountWishlistRoute: AccountWishlistRoute,
   AccountIndexRoute: AccountIndexRoute,
 }
