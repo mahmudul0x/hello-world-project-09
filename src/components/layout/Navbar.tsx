@@ -40,10 +40,10 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "relative w-full border-b transition-all duration-500",
+          "relative w-full border-b transition-all duration-300",
           scrolled
-            ? "border-border/60 bg-background/95 shadow-luxury backdrop-blur-xl"
-            : "border-transparent bg-background/90 shadow-soft-lux backdrop-blur",
+            ? "border-border/60 bg-background/85 shadow-luxury backdrop-blur-2xl supports-[backdrop-filter]:bg-background/70"
+            : "border-transparent bg-background/95 backdrop-blur-md",
         )}
       >
         <div className="container-luxury flex h-20 items-center justify-between gap-6">
