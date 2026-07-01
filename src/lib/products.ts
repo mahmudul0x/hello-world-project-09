@@ -356,6 +356,14 @@ export const REVIEWS_SEED = [
   { name: "মাহমুদ হাসান", location: "উত্তরা, ঢাকা", rating: 5, text: "কাস্টম সাইজে বানিয়ে দিয়েছে ঠিক মাপে। ফিটিং একদম পার্ফেক্ট।" },
 ];
 
+const BN_DIGITS = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+export function toBn(n: number | string): string {
+  return String(n).replace(/\d/g, (d) => BN_DIGITS[Number(d)]);
+}
+export function bnNum(n: number): string {
+  // 1,234 -> ১,২৩৪
+  return toBn(n.toLocaleString("en-US"));
+}
 export function bnPrice(n: number) {
-  return `৳${n.toLocaleString("bn-BD")}`;
+  return `৳${bnNum(n)}`;
 }
