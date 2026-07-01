@@ -21,12 +21,16 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as BestSellersRouteImport } from './routes/best-sellers'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OrderTrackingIndexRouteImport } from './routes/order-tracking.index'
+import { Route as AccountIndexRouteImport } from './routes/account.index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as OrderTrackingIdRouteImport } from './routes/order-tracking.$id'
 import { Route as OrderSuccessIdRouteImport } from './routes/order-success.$id'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
+import { Route as AccountWishlistRouteImport } from './routes/account.wishlist'
+import { Route as AccountOrdersRouteImport } from './routes/account.orders'
 
 const WishlistRoute = WishlistRouteImport.update({
   id: '/wishlist',
@@ -88,6 +92,11 @@ const BestSellersRoute = BestSellersRouteImport.update({
   path: '/best-sellers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -97,6 +106,11 @@ const OrderTrackingIndexRoute = OrderTrackingIndexRouteImport.update({
   id: '/order-tracking/',
   path: '/order-tracking/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AccountIndexRoute = AccountIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AccountRoute,
 } as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
@@ -118,9 +132,20 @@ const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
   path: '/collections/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountWishlistRoute = AccountWishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountOrdersRoute = AccountOrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => AccountRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account': typeof AccountRouteWithChildren
   '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
@@ -133,10 +158,13 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
+  '/account/orders': typeof AccountOrdersRoute
+  '/account/wishlist': typeof AccountWishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/account/': typeof AccountIndexRoute
   '/order-tracking/': typeof OrderTrackingIndexRoute
 }
 export interface FileRoutesByTo {
@@ -153,15 +181,19 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
+  '/account/orders': typeof AccountOrdersRoute
+  '/account/wishlist': typeof AccountWishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/account': typeof AccountIndexRoute
   '/order-tracking': typeof OrderTrackingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account': typeof AccountRouteWithChildren
   '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
@@ -174,16 +206,20 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
+  '/account/orders': typeof AccountOrdersRoute
+  '/account/wishlist': typeof AccountWishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/account/': typeof AccountIndexRoute
   '/order-tracking/': typeof OrderTrackingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/account'
     | '/best-sellers'
     | '/cart'
     | '/checkout'
@@ -196,10 +232,13 @@ export interface FileRouteTypes {
     | '/search'
     | '/shop'
     | '/wishlist'
+    | '/account/orders'
+    | '/account/wishlist'
     | '/collections/$slug'
     | '/order-success/$id'
     | '/order-tracking/$id'
     | '/product/$slug'
+    | '/account/'
     | '/order-tracking/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -216,14 +255,18 @@ export interface FileRouteTypes {
     | '/search'
     | '/shop'
     | '/wishlist'
+    | '/account/orders'
+    | '/account/wishlist'
     | '/collections/$slug'
     | '/order-success/$id'
     | '/order-tracking/$id'
     | '/product/$slug'
+    | '/account'
     | '/order-tracking'
   id:
     | '__root__'
     | '/'
+    | '/account'
     | '/best-sellers'
     | '/cart'
     | '/checkout'
@@ -236,15 +279,19 @@ export interface FileRouteTypes {
     | '/search'
     | '/shop'
     | '/wishlist'
+    | '/account/orders'
+    | '/account/wishlist'
     | '/collections/$slug'
     | '/order-success/$id'
     | '/order-tracking/$id'
     | '/product/$slug'
+    | '/account/'
     | '/order-tracking/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountRoute: typeof AccountRouteWithChildren
   BestSellersRoute: typeof BestSellersRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
@@ -350,6 +397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BestSellersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -363,6 +417,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/order-tracking/'
       preLoaderRoute: typeof OrderTrackingIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/account/': {
+      id: '/account/'
+      path: '/'
+      fullPath: '/account/'
+      preLoaderRoute: typeof AccountIndexRouteImport
+      parentRoute: typeof AccountRoute
     }
     '/product/$slug': {
       id: '/product/$slug'
@@ -392,11 +453,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account/wishlist': {
+      id: '/account/wishlist'
+      path: '/wishlist'
+      fullPath: '/account/wishlist'
+      preLoaderRoute: typeof AccountWishlistRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/orders': {
+      id: '/account/orders'
+      path: '/orders'
+      fullPath: '/account/orders'
+      preLoaderRoute: typeof AccountOrdersRouteImport
+      parentRoute: typeof AccountRoute
+    }
   }
 }
 
+interface AccountRouteChildren {
+  AccountOrdersRoute: typeof AccountOrdersRoute
+  AccountWishlistRoute: typeof AccountWishlistRoute
+  AccountIndexRoute: typeof AccountIndexRoute
+}
+
+const AccountRouteChildren: AccountRouteChildren = {
+  AccountOrdersRoute: AccountOrdersRoute,
+  AccountWishlistRoute: AccountWishlistRoute,
+  AccountIndexRoute: AccountIndexRoute,
+}
+
+const AccountRouteWithChildren =
+  AccountRoute._addFileChildren(AccountRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountRoute: AccountRouteWithChildren,
   BestSellersRoute: BestSellersRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
