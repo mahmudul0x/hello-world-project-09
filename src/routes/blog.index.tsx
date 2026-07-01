@@ -9,7 +9,7 @@ import { Newsletter } from "@/components/blocks/Newsletter";
 import { BLOGS, IMG } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "ব্লগ — ChayaLux ছায়ালাক্স" },
