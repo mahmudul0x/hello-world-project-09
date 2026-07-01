@@ -18,6 +18,9 @@ import { FloatingActions } from "@/components/shop/FloatingActions";
 import { QuickViewDialog } from "@/components/shop/QuickViewDialog";
 import { SearchDialog } from "@/components/shop/SearchDialog";
 import { MobileBottomBar } from "@/components/shop/MobileBottomBar";
+import { PageProgress } from "@/components/ui/page-progress";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import { PageLoader } from "@/components/ui/page-loader";
 
 function NotFoundComponent() {
   return (
@@ -129,12 +132,15 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ShopProvider>
+          <PageProgress />
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
           <FloatingActions />
+          <ScrollToTop />
           <MobileBottomBar />
           <QuickViewDialog />
           <SearchDialog />
+          <PageLoader />
           <Toaster position="top-center" richColors closeButton />
         </ShopProvider>
       </AuthProvider>
