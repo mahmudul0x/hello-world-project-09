@@ -9,18 +9,43 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as NewCollectionRouteImport } from './routes/new-collection'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CartRouteImport } from './routes/cart'
 import { Route as BestSellersRouteImport } from './routes/best-sellers'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OrderTrackingIndexRouteImport } from './routes/order-tracking.index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as OrderTrackingIdRouteImport } from './routes/order-tracking.$id'
+import { Route as OrderSuccessIdRouteImport } from './routes/order-success.$id'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 
+const WishlistRoute = WishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OffersRoute = OffersRouteImport.update({
@@ -38,6 +63,26 @@ const NewArrivalsRoute = NewArrivalsRouteImport.update({
   path: '/new-arrivals',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BestSellersRoute = BestSellersRouteImport.update({
   id: '/best-sellers',
   path: '/best-sellers',
@@ -48,9 +93,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderTrackingIndexRoute = OrderTrackingIndexRouteImport.update({
+  id: '/order-tracking/',
+  path: '/order-tracking/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderTrackingIdRoute = OrderTrackingIdRouteImport.update({
+  id: '/order-tracking/$id',
+  path: '/order-tracking/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderSuccessIdRoute = OrderSuccessIdRouteImport.update({
+  id: '/order-success/$id',
+  path: '/order-success/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
@@ -62,85 +122,176 @@ const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/best-sellers': typeof BestSellersRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/compare': typeof CompareRoute
+  '/login': typeof LoginRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/new-collection': typeof NewCollectionRoute
   '/offers': typeof OffersRoute
+  '/register': typeof RegisterRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/order-success/$id': typeof OrderSuccessIdRoute
+  '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/order-tracking/': typeof OrderTrackingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/best-sellers': typeof BestSellersRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/compare': typeof CompareRoute
+  '/login': typeof LoginRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/new-collection': typeof NewCollectionRoute
   '/offers': typeof OffersRoute
+  '/register': typeof RegisterRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/order-success/$id': typeof OrderSuccessIdRoute
+  '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/order-tracking': typeof OrderTrackingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/best-sellers': typeof BestSellersRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/compare': typeof CompareRoute
+  '/login': typeof LoginRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/new-collection': typeof NewCollectionRoute
   '/offers': typeof OffersRoute
+  '/register': typeof RegisterRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/wishlist': typeof WishlistRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/order-success/$id': typeof OrderSuccessIdRoute
+  '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/order-tracking/': typeof OrderTrackingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/best-sellers'
+    | '/cart'
+    | '/checkout'
+    | '/compare'
+    | '/login'
     | '/new-arrivals'
     | '/new-collection'
     | '/offers'
+    | '/register'
+    | '/search'
     | '/shop'
+    | '/wishlist'
     | '/collections/$slug'
+    | '/order-success/$id'
+    | '/order-tracking/$id'
     | '/product/$slug'
+    | '/order-tracking/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/best-sellers'
+    | '/cart'
+    | '/checkout'
+    | '/compare'
+    | '/login'
     | '/new-arrivals'
     | '/new-collection'
     | '/offers'
+    | '/register'
+    | '/search'
     | '/shop'
+    | '/wishlist'
     | '/collections/$slug'
+    | '/order-success/$id'
+    | '/order-tracking/$id'
     | '/product/$slug'
+    | '/order-tracking'
   id:
     | '__root__'
     | '/'
     | '/best-sellers'
+    | '/cart'
+    | '/checkout'
+    | '/compare'
+    | '/login'
     | '/new-arrivals'
     | '/new-collection'
     | '/offers'
+    | '/register'
+    | '/search'
     | '/shop'
+    | '/wishlist'
     | '/collections/$slug'
+    | '/order-success/$id'
+    | '/order-tracking/$id'
     | '/product/$slug'
+    | '/order-tracking/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BestSellersRoute: typeof BestSellersRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
+  CompareRoute: typeof CompareRoute
+  LoginRoute: typeof LoginRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   NewCollectionRoute: typeof NewCollectionRoute
   OffersRoute: typeof OffersRoute
+  RegisterRoute: typeof RegisterRoute
+  SearchRoute: typeof SearchRoute
   ShopRoute: typeof ShopRoute
+  WishlistRoute: typeof WishlistRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
+  OrderSuccessIdRoute: typeof OrderSuccessIdRoute
+  OrderTrackingIdRoute: typeof OrderTrackingIdRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  OrderTrackingIndexRoute: typeof OrderTrackingIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wishlist': {
+      id: '/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof WishlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offers': {
@@ -164,6 +315,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewArrivalsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/best-sellers': {
       id: '/best-sellers'
       path: '/best-sellers'
@@ -178,11 +357,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order-tracking/': {
+      id: '/order-tracking/'
+      path: '/order-tracking'
+      fullPath: '/order-tracking/'
+      preLoaderRoute: typeof OrderTrackingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$slug': {
       id: '/product/$slug'
       path: '/product/$slug'
       fullPath: '/product/$slug'
       preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-tracking/$id': {
+      id: '/order-tracking/$id'
+      path: '/order-tracking/$id'
+      fullPath: '/order-tracking/$id'
+      preLoaderRoute: typeof OrderTrackingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-success/$id': {
+      id: '/order-success/$id'
+      path: '/order-success/$id'
+      fullPath: '/order-success/$id'
+      preLoaderRoute: typeof OrderSuccessIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collections/$slug': {
@@ -198,12 +398,22 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BestSellersRoute: BestSellersRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
+  CompareRoute: CompareRoute,
+  LoginRoute: LoginRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   NewCollectionRoute: NewCollectionRoute,
   OffersRoute: OffersRoute,
+  RegisterRoute: RegisterRoute,
+  SearchRoute: SearchRoute,
   ShopRoute: ShopRoute,
+  WishlistRoute: WishlistRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
+  OrderSuccessIdRoute: OrderSuccessIdRoute,
+  OrderTrackingIdRoute: OrderTrackingIdRoute,
   ProductSlugRoute: ProductSlugRoute,
+  OrderTrackingIndexRoute: OrderTrackingIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
