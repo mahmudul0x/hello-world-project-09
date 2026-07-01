@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Eye, Heart, ShoppingBag, Star } from "lucide-react";
-import { useState } from "react";
+import { Eye, GitCompare, Heart, ShoppingBag, Star } from "lucide-react";
 import { LuxButton } from "@/components/ui/lux-button";
 import { bnPrice, type Product } from "@/lib/products";
+import { useShop } from "@/lib/shop/store";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -13,7 +13,10 @@ interface Props {
 }
 
 export function ProductCardPro({ product, onQuickView, index = 0 }: Props) {
-  const [wish, setWish] = useState(false);
+  const { addToCart, toggleWishlist, isWished, toggleCompare, isCompared, openQuickView } = useShop();
+  const wish = isWished(product.id);
+  const comparing = isCompared(product.id);
+  const handleQuickView = onQuickView ?? openQuickView;
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
     : 0;
