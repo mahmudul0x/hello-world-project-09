@@ -9,38 +9,168 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as OffersRouteImport } from './routes/offers'
+import { Route as NewCollectionRouteImport } from './routes/new-collection'
+import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
+import { Route as BestSellersRouteImport } from './routes/best-sellers'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewCollectionRoute = NewCollectionRouteImport.update({
+  id: '/new-collection',
+  path: '/new-collection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewArrivalsRoute = NewArrivalsRouteImport.update({
+  id: '/new-arrivals',
+  path: '/new-arrivals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BestSellersRoute = BestSellersRouteImport.update({
+  id: '/best-sellers',
+  path: '/best-sellers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductSlugRoute = ProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/best-sellers': typeof BestSellersRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/new-collection': typeof NewCollectionRoute
+  '/offers': typeof OffersRoute
+  '/shop': typeof ShopRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/best-sellers': typeof BestSellersRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/new-collection': typeof NewCollectionRoute
+  '/offers': typeof OffersRoute
+  '/shop': typeof ShopRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/best-sellers': typeof BestSellersRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/new-collection': typeof NewCollectionRoute
+  '/offers': typeof OffersRoute
+  '/shop': typeof ShopRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/best-sellers'
+    | '/new-arrivals'
+    | '/new-collection'
+    | '/offers'
+    | '/shop'
+    | '/collections/$slug'
+    | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/best-sellers'
+    | '/new-arrivals'
+    | '/new-collection'
+    | '/offers'
+    | '/shop'
+    | '/collections/$slug'
+    | '/product/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/best-sellers'
+    | '/new-arrivals'
+    | '/new-collection'
+    | '/offers'
+    | '/shop'
+    | '/collections/$slug'
+    | '/product/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BestSellersRoute: typeof BestSellersRoute
+  NewArrivalsRoute: typeof NewArrivalsRoute
+  NewCollectionRoute: typeof NewCollectionRoute
+  OffersRoute: typeof OffersRoute
+  ShopRoute: typeof ShopRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
+  ProductSlugRoute: typeof ProductSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-collection': {
+      id: '/new-collection'
+      path: '/new-collection'
+      fullPath: '/new-collection'
+      preLoaderRoute: typeof NewCollectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-arrivals': {
+      id: '/new-arrivals'
+      path: '/new-arrivals'
+      fullPath: '/new-arrivals'
+      preLoaderRoute: typeof NewArrivalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/best-sellers': {
+      id: '/best-sellers'
+      path: '/best-sellers'
+      fullPath: '/best-sellers'
+      preLoaderRoute: typeof BestSellersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product/$slug': {
+      id: '/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/product/$slug'
+      preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BestSellersRoute: BestSellersRoute,
+  NewArrivalsRoute: NewArrivalsRoute,
+  NewCollectionRoute: NewCollectionRoute,
+  OffersRoute: OffersRoute,
+  ShopRoute: ShopRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
+  ProductSlugRoute: ProductSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

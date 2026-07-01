@@ -6,12 +6,11 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "হোম", to: "/" },
-  { label: "পণ্যসমূহ", to: "/" },
-  { label: "ক্যাটাগরি", to: "/" },
-  { label: "গ্যালারি", to: "/" },
-  { label: "ব্লগ", to: "/" },
-  { label: "আমাদের সম্পর্কে", to: "/" },
-  { label: "যোগাযোগ", to: "/" },
+  { label: "সব পণ্য", to: "/shop" },
+  { label: "নতুন কালেকশন", to: "/new-collection" },
+  { label: "বেস্ট সেলার", to: "/best-sellers" },
+  { label: "অফার", to: "/offers" },
+  { label: "নতুন আগমন", to: "/new-arrivals" },
 ];
 
 export function Navbar() {
