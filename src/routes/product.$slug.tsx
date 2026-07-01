@@ -63,10 +63,16 @@ function ProductDetailPage() {
   const [size, setSize] = useState(product.sizes[0]);
   const [qty, setQty] = useState(1);
   const { add } = useRecentlyViewed();
+  const { addToCart, toggleWishlist, isWished } = useShop();
+  const navigate = useNavigate();
+  const wish = isWished(product.id);
 
   useEffect(() => {
     add(slug);
   }, [slug, add]);
+
+  const handleAdd = () => addToCart(product, { color, size, qty });
+  const handleBuyNow = () => { addToCart(product, { color, size, qty, silent: true }); navigate({ to: "/checkout" }); };
 
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
