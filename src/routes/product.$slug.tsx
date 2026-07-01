@@ -247,17 +247,23 @@ function ProductDetailPage() {
                   <Plus size={16} />
                 </button>
               </div>
-              <LuxButton variant="primary" size="lg" className="flex-1 min-w-[180px]">
+              <LuxButton variant="primary" size="lg" className="flex-1 min-w-[180px]" onClick={handleAdd}>
                 <ShoppingBag size={16} /> কার্টে যোগ করুন
               </LuxButton>
-              <LuxButton variant="gold" size="lg" className="flex-1 min-w-[180px]">
+              <LuxButton variant="gold" size="lg" className="flex-1 min-w-[180px]" onClick={handleBuyNow}>
                 এখনই অর্ডার করুন
               </LuxButton>
               <button
+                onClick={() => toggleWishlist(product.id)}
                 aria-label="উইশলিস্ট"
-                className="grid h-14 w-14 place-items-center rounded-[18px] border border-border bg-background text-foreground transition hover:border-primary hover:text-primary"
+                className={cn(
+                  "grid h-14 w-14 place-items-center rounded-[18px] border transition",
+                  wish
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-background text-foreground hover:border-primary hover:text-primary",
+                )}
               >
-                <Heart size={18} />
+                <Heart size={18} fill={wish ? "currentColor" : "none"} />
               </button>
             </div>
 
