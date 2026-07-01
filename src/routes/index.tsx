@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  ArrowRight, Award, Banknote, BedDouble, Brush,
-  Gem, Headphones, Home, Layers, Leaf, Package, Palette, Ruler, Scissors,
-  ShieldCheck, Sofa, Sparkles, Star, Truck
+  ArrowRight, Award, Banknote, Layers, Package, Palette,
+  Ruler, Scissors, Truck,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-living-room.jpg";
