@@ -74,13 +74,13 @@ export function ProductCardPro({ product, onQuickView, index = 0 }: Props) {
           )}
         </div>
 
-        {/* Wishlist + Quick view */}
-        <div className="absolute right-3 top-3 flex flex-col gap-2 opacity-0 transition-all duration-500 group-hover:opacity-100">
+        {/* Wishlist + Quick view + Compare */}
+        <div className="absolute right-3 top-3 flex flex-col gap-2 opacity-100 transition-all duration-500 lg:opacity-0 lg:group-hover:opacity-100">
           <button
             aria-label="উইশলিস্ট"
             onClick={(e) => {
               e.preventDefault();
-              setWish((v) => !v);
+              toggleWishlist(product.id);
             }}
             className={cn(
               "grid h-9 w-9 place-items-center rounded-full bg-background/95 shadow-soft-lux backdrop-blur transition hover:bg-primary hover:text-primary-foreground",
@@ -89,24 +89,35 @@ export function ProductCardPro({ product, onQuickView, index = 0 }: Props) {
           >
             <Heart size={15} fill={wish ? "currentColor" : "none"} />
           </button>
-          {onQuickView && (
-            <button
-              aria-label="কুইক ভিউ"
-              onClick={(e) => {
-                e.preventDefault();
-                onQuickView(product);
-              }}
-              className="grid h-9 w-9 place-items-center rounded-full bg-background/95 text-foreground shadow-soft-lux backdrop-blur transition hover:bg-dark hover:text-background"
-            >
-              <Eye size={15} />
-            </button>
-          )}
+          <button
+            aria-label="কুইক ভিউ"
+            onClick={(e) => {
+              e.preventDefault();
+              handleQuickView(product);
+            }}
+            className="grid h-9 w-9 place-items-center rounded-full bg-background/95 text-foreground shadow-soft-lux backdrop-blur transition hover:bg-dark hover:text-background"
+          >
+            <Eye size={15} />
+          </button>
+          <button
+            aria-label="তুলনা"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleCompare(product.id);
+            }}
+            className={cn(
+              "grid h-9 w-9 place-items-center rounded-full bg-background/95 text-foreground shadow-soft-lux backdrop-blur transition hover:bg-gold hover:text-dark",
+              comparing && "bg-gold text-dark",
+            )}
+          >
+            <GitCompare size={14} />
+          </button>
         </div>
 
         {/* Bottom add-to-cart */}
         <div className="absolute inset-x-3 bottom-3 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => { e.preventDefault(); addToCart(product); }}
             className="ripple-btn flex h-11 w-full items-center justify-center gap-2 rounded-[14px] bg-dark text-xs font-medium text-background transition hover:bg-primary"
           >
             <ShoppingBag size={14} /> কার্টে যোগ করুন
