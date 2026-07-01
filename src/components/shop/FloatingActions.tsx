@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Facebook, MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 export function FloatingActions() {
   const actions = [
