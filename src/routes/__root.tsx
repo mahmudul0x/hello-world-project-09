@@ -21,6 +21,7 @@ import { MobileBottomBar } from "@/components/shop/MobileBottomBar";
 import { PageProgress } from "@/components/ui/page-progress";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { PageLoader } from "@/components/ui/page-loader";
+import { CookieConsent } from "@/components/ui/cookie-consent";
 
 function NotFoundComponent() {
   return (
@@ -104,6 +105,46 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "ChayaLux",
+          alternateName: "ছায়ালাক্স",
+          description:
+            "ChayaLux — বাংলাদেশের প্রিমিয়াম পর্দা, ভেলভেট, ব্ল্যাকআউট, চাইনিজ কার্টেন ও হোম ডেকোর ব্র্যান্ড।",
+          url: "/",
+          logo: "/favicon.ico",
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+8801885901184",
+            contactType: "customer service",
+            areaServed: "BD",
+            availableLanguage: ["Bengali", "English"],
+          },
+          sameAs: [
+            "https://www.facebook.com/chayalux",
+            "https://www.instagram.com/chayalux",
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "ChayaLux",
+          url: "/",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "/search?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -141,6 +182,7 @@ function RootComponent() {
           <QuickViewDialog />
           <SearchDialog />
           <PageLoader />
+          <CookieConsent />
           <Toaster position="top-center" richColors closeButton />
         </ShopProvider>
       </AuthProvider>

@@ -5,6 +5,7 @@ import { LuxButton } from "@/components/ui/lux-button";
 import { useAuth } from "@/lib/shop/auth";
 
 export const Route = createFileRoute("/account/profile")({
+  head: () => ({ meta: [{ name: "robots", content: "noindex, nofollow" }] }),
   component: ProfilePage,
 });
 

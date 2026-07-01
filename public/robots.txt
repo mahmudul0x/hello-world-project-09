@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Disallow: /account
+Disallow: /account/
+Disallow: /checkout
+Disallow: /cart
+Disallow: /login
+Disallow: /register
+Disallow: /order-success/
+Disallow: /order-tracking/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+Sitemap: /sitemap.xml

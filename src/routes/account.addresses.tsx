@@ -6,6 +6,7 @@ import { BD_DISTRICTS } from "@/lib/bd-locations";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/account/addresses")({
+  head: () => ({ meta: [{ name: "robots", content: "noindex, nofollow" }] }),
   component: AddressesPage,
 });
 

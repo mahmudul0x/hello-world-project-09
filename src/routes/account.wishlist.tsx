@@ -6,6 +6,7 @@ import { PRODUCTS, bnPrice } from "@/lib/products";
 import { useShop } from "@/lib/shop/store";
 
 export const Route = createFileRoute("/account/wishlist")({
+  head: () => ({ meta: [{ name: "robots", content: "noindex, nofollow" }] }),
   component: AccountWishlist,
 });
 
