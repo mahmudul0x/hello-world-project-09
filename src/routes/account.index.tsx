@@ -5,6 +5,7 @@ import { useAuth } from "@/lib/shop/auth";
 import { useShop } from "@/lib/shop/store";
 
 export const Route = createFileRoute("/account/")({
+  head: () => ({ meta: [{ name: "robots", content: "noindex, nofollow" }] }),
   component: DashboardPage,
 });
 
