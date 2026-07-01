@@ -17,6 +17,8 @@ import { ReviewCard } from "@/components/cards/ReviewCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { bnNum, bnPrice, getProduct, getRelated, REVIEWS_SEED } from "@/lib/products";
+import { useShop } from "@/lib/shop/store";
+import { useNavigate } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/product/$slug")({
@@ -61,10 +63,16 @@ function ProductDetailPage() {
   const [size, setSize] = useState(product.sizes[0]);
   const [qty, setQty] = useState(1);
   const { add } = useRecentlyViewed();
+  const { addToCart, toggleWishlist, isWished } = useShop();
+  const navigate = useNavigate();
+  const wish = isWished(product.id);
 
   useEffect(() => {
     add(slug);
   }, [slug, add]);
+
+  const handleAdd = () => addToCart(product, { color, size, qty });
+  const handleBuyNow = () => { addToCart(product, { color, size, qty, silent: true }); navigate({ to: "/checkout" }); };
 
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -239,17 +247,23 @@ function ProductDetailPage() {
                   <Plus size={16} />
                 </button>
               </div>
-              <LuxButton variant="primary" size="lg" className="flex-1 min-w-[180px]">
+              <LuxButton variant="primary" size="lg" className="flex-1 min-w-[180px]" onClick={handleAdd}>
                 <ShoppingBag size={16} /> কার্টে যোগ করুন
               </LuxButton>
-              <LuxButton variant="gold" size="lg" className="flex-1 min-w-[180px]">
+              <LuxButton variant="gold" size="lg" className="flex-1 min-w-[180px]" onClick={handleBuyNow}>
                 এখনই অর্ডার করুন
               </LuxButton>
               <button
+                onClick={() => toggleWishlist(product.id)}
                 aria-label="উইশলিস্ট"
-                className="grid h-14 w-14 place-items-center rounded-[18px] border border-border bg-background text-foreground transition hover:border-primary hover:text-primary"
+                className={cn(
+                  "grid h-14 w-14 place-items-center rounded-[18px] border transition",
+                  wish
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-background text-foreground hover:border-primary hover:text-primary",
+                )}
               >
-                <Heart size={18} />
+                <Heart size={18} fill={wish ? "currentColor" : "none"} />
               </button>
             </div>
 
