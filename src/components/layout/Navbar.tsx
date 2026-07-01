@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, Search, ShoppingBag, User, X, Phone } from "lucide-react";
+import { Facebook, Heart, Menu, MessageCircle, Phone, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -27,25 +27,17 @@ export function Navbar() {
 
   return (
     <>
-      {/* Top strip */}
-      <div className="hidden bg-dark text-background/80 md:block">
-        <div className="container-luxury flex h-9 items-center justify-between text-xs">
-          <span>সারা বাংলাদেশে হোম ডেলিভারি · ক্যাশ অন ডেলিভারি</span>
-          <a href="tel:01885901184" className="flex items-center gap-1.5 transition hover:text-gold">
-            <Phone size={12} /> 01885-901184
-          </a>
-        </div>
-      </div>
+
 
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "sticky top-0 z-50 w-full transition-all duration-500",
+          "sticky top-0 z-50 w-full border-b transition-all duration-500",
           scrolled
-            ? "border-b border-border/60 bg-background/85 shadow-soft-lux backdrop-blur-xl"
-            : "bg-transparent",
+            ? "border-border/60 bg-background/95 shadow-luxury backdrop-blur-xl"
+            : "border-transparent bg-background/90 shadow-soft-lux backdrop-blur",
         )}
       >
         <div className="container-luxury flex h-20 items-center justify-between gap-6">
@@ -76,13 +68,43 @@ export function Navbar() {
 
           <div className="flex items-center gap-1">
             <IconBtn label="খুঁজুন"><Search size={18} /></IconBtn>
-            <IconBtn label="অ্যাকাউন্ট" className="hidden sm:inline-flex"><User size={18} /></IconBtn>
+            <IconBtn label="উইশলিস্ট" className="hidden sm:inline-flex">
+              <Heart size={18} />
+              <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-gold px-1 text-[10px] font-semibold text-dark">
+                3
+              </span>
+            </IconBtn>
             <IconBtn label="কার্ট">
               <ShoppingBag size={18} />
               <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-semibold text-primary-foreground">
                 2
               </span>
             </IconBtn>
+            <div className="mx-1 hidden h-6 w-px bg-border md:block" />
+            <a
+              href="https://facebook.com/chayalux"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="ফেসবুক"
+              className="hidden h-10 w-10 place-items-center rounded-full text-foreground/70 transition hover:text-primary md:grid"
+            >
+              <Facebook size={16} />
+            </a>
+            <a
+              href="https://wa.me/8801885901184"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              className="hidden h-10 w-10 place-items-center rounded-full text-foreground/70 transition hover:text-primary md:grid"
+            >
+              <MessageCircle size={16} />
+            </a>
+            <a
+              href="tel:01885901184"
+              className="ripple-btn ml-2 hidden h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition hover:-translate-y-0.5 hover:bg-dark md:inline-flex"
+            >
+              <Phone size={14} /> 01885-901184
+            </a>
             <button
               onClick={() => setOpen(true)}
               aria-label="মেনু"
