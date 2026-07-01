@@ -21,6 +21,7 @@ import { MobileBottomBar } from "@/components/shop/MobileBottomBar";
 import { PageProgress } from "@/components/ui/page-progress";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { PageLoader } from "@/components/ui/page-loader";
+import { CookieConsent } from "@/components/ui/cookie-consent";
 
 function NotFoundComponent() {
   return (
@@ -181,6 +182,7 @@ function RootComponent() {
           <QuickViewDialog />
           <SearchDialog />
           <PageLoader />
+          <CookieConsent />
           <Toaster position="top-center" richColors closeButton />
         </ShopProvider>
       </AuthProvider>
