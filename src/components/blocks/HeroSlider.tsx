@@ -44,12 +44,12 @@ export function HeroSlider({ slides }: { slides: HeroSlide[] }) {
               animate={{ scale: 1.1 }}
               transition={{ duration: 8, ease: "linear" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/45 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/50 to-dark/70" />
             <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
           </motion.div>
         </AnimatePresence>
 
-        <div className="container-luxury relative z-10 flex h-full items-center">
+        <div className="container-luxury relative z-10 flex h-full items-center justify-center text-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={i}
@@ -57,9 +57,9 @@ export function HeroSlider({ slides }: { slides: HeroSlide[] }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-              className="flex max-w-2xl flex-col gap-5 text-background"
+              className="flex max-w-3xl flex-col items-center gap-5 text-background"
             >
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-gold/50 bg-background/10 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.25em] text-gold backdrop-blur-md">
+              <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-background/10 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.25em] text-gold backdrop-blur-md">
                 <span className="h-1 w-1 rounded-full bg-gold" />
                 {slide.eyebrow}
               </span>
@@ -70,7 +70,7 @@ export function HeroSlider({ slides }: { slides: HeroSlide[] }) {
               <p className="max-w-lg text-base leading-relaxed text-background/85 sm:text-lg">
                 {slide.description}
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
+              <div className="mt-3 flex flex-wrap justify-center gap-3">
                 <LuxButton variant="gold" size="lg">
                   এখনই অর্ডার করুন <ArrowRight size={16} />
                 </LuxButton>
@@ -82,6 +82,7 @@ export function HeroSlider({ slides }: { slides: HeroSlide[] }) {
                   সব কালেকশন দেখুন
                 </LuxButton>
               </div>
+
             </motion.div>
           </AnimatePresence>
         </div>
