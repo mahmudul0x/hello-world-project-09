@@ -10,25 +10,36 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WishlistRouteImport } from './routes/wishlist'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as NewCollectionRouteImport } from './routes/new-collection'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as DeliveryPolicyRouteImport } from './routes/delivery-policy'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as BestSellersRouteImport } from './routes/best-sellers'
 import { Route as AccountRouteImport } from './routes/account'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OrderTrackingIndexRouteImport } from './routes/order-tracking.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as OrderTrackingIdRouteImport } from './routes/order-tracking.$id'
 import { Route as OrderSuccessIdRouteImport } from './routes/order-success.$id'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AccountWishlistRouteImport } from './routes/account.wishlist'
 import { Route as AccountProfileRouteImport } from './routes/account.profile'
 import { Route as AccountPasswordRouteImport } from './routes/account.password'
@@ -38,6 +49,11 @@ import { Route as AccountAddressesRouteImport } from './routes/account.addresses
 const WishlistRoute = WishlistRouteImport.update({
   id: '/wishlist',
   path: '/wishlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -50,9 +66,24 @@ const SearchRoute = SearchRouteImport.update({
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnPolicyRoute = ReturnPolicyRouteImport.update({
+  id: '/return-policy',
+  path: '/return-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OffersRoute = OffersRouteImport.update({
@@ -73,6 +104,26 @@ const NewArrivalsRoute = NewArrivalsRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeliveryPolicyRoute = DeliveryPolicyRouteImport.update({
+  id: '/delivery-policy',
+  path: '/delivery-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareRoute = CompareRouteImport.update({
@@ -100,6 +151,11 @@ const AccountRoute = AccountRouteImport.update({
   path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -108,6 +164,11 @@ const IndexRoute = IndexRouteImport.update({
 const OrderTrackingIndexRoute = OrderTrackingIndexRouteImport.update({
   id: '/order-tracking/',
   path: '/order-tracking/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountIndexRoute = AccountIndexRouteImport.update({
@@ -133,6 +194,11 @@ const OrderSuccessIdRoute = OrderSuccessIdRouteImport.update({
 const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
   id: '/collections/$slug',
   path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountWishlistRoute = AccountWishlistRouteImport.update({
@@ -163,187 +229,264 @@ const AccountAddressesRoute = AccountAddressesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/account': typeof AccountRouteWithChildren
   '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/delivery-policy': typeof DeliveryPolicyRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/new-collection': typeof NewCollectionRoute
   '/offers': typeof OffersRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/register': typeof RegisterRoute
+  '/return-policy': typeof ReturnPolicyRoute
+  '/reviews': typeof ReviewsRoute
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
   '/account/addresses': typeof AccountAddressesRoute
   '/account/orders': typeof AccountOrdersRoute
   '/account/password': typeof AccountPasswordRoute
   '/account/profile': typeof AccountProfileRoute
   '/account/wishlist': typeof AccountWishlistRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/account/': typeof AccountIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/order-tracking/': typeof OrderTrackingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/delivery-policy': typeof DeliveryPolicyRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/new-collection': typeof NewCollectionRoute
   '/offers': typeof OffersRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/register': typeof RegisterRoute
+  '/return-policy': typeof ReturnPolicyRoute
+  '/reviews': typeof ReviewsRoute
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
   '/account/addresses': typeof AccountAddressesRoute
   '/account/orders': typeof AccountOrdersRoute
   '/account/password': typeof AccountPasswordRoute
   '/account/profile': typeof AccountProfileRoute
   '/account/wishlist': typeof AccountWishlistRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/account': typeof AccountIndexRoute
+  '/blog': typeof BlogIndexRoute
   '/order-tracking': typeof OrderTrackingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/account': typeof AccountRouteWithChildren
   '/best-sellers': typeof BestSellersRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/delivery-policy': typeof DeliveryPolicyRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/new-collection': typeof NewCollectionRoute
   '/offers': typeof OffersRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/register': typeof RegisterRoute
+  '/return-policy': typeof ReturnPolicyRoute
+  '/reviews': typeof ReviewsRoute
   '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
   '/account/addresses': typeof AccountAddressesRoute
   '/account/orders': typeof AccountOrdersRoute
   '/account/password': typeof AccountPasswordRoute
   '/account/profile': typeof AccountProfileRoute
   '/account/wishlist': typeof AccountWishlistRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/order-success/$id': typeof OrderSuccessIdRoute
   '/order-tracking/$id': typeof OrderTrackingIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/account/': typeof AccountIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/order-tracking/': typeof OrderTrackingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/account'
     | '/best-sellers'
     | '/cart'
     | '/checkout'
     | '/compare'
+    | '/contact'
+    | '/delivery-policy'
+    | '/faq'
+    | '/gallery'
     | '/login'
     | '/new-arrivals'
     | '/new-collection'
     | '/offers'
+    | '/privacy-policy'
     | '/register'
+    | '/return-policy'
+    | '/reviews'
     | '/search'
     | '/shop'
+    | '/terms'
     | '/wishlist'
     | '/account/addresses'
     | '/account/orders'
     | '/account/password'
     | '/account/profile'
     | '/account/wishlist'
+    | '/blog/$slug'
     | '/collections/$slug'
     | '/order-success/$id'
     | '/order-tracking/$id'
     | '/product/$slug'
     | '/account/'
+    | '/blog/'
     | '/order-tracking/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/best-sellers'
     | '/cart'
     | '/checkout'
     | '/compare'
+    | '/contact'
+    | '/delivery-policy'
+    | '/faq'
+    | '/gallery'
     | '/login'
     | '/new-arrivals'
     | '/new-collection'
     | '/offers'
+    | '/privacy-policy'
     | '/register'
+    | '/return-policy'
+    | '/reviews'
     | '/search'
     | '/shop'
+    | '/terms'
     | '/wishlist'
     | '/account/addresses'
     | '/account/orders'
     | '/account/password'
     | '/account/profile'
     | '/account/wishlist'
+    | '/blog/$slug'
     | '/collections/$slug'
     | '/order-success/$id'
     | '/order-tracking/$id'
     | '/product/$slug'
     | '/account'
+    | '/blog'
     | '/order-tracking'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/account'
     | '/best-sellers'
     | '/cart'
     | '/checkout'
     | '/compare'
+    | '/contact'
+    | '/delivery-policy'
+    | '/faq'
+    | '/gallery'
     | '/login'
     | '/new-arrivals'
     | '/new-collection'
     | '/offers'
+    | '/privacy-policy'
     | '/register'
+    | '/return-policy'
+    | '/reviews'
     | '/search'
     | '/shop'
+    | '/terms'
     | '/wishlist'
     | '/account/addresses'
     | '/account/orders'
     | '/account/password'
     | '/account/profile'
     | '/account/wishlist'
+    | '/blog/$slug'
     | '/collections/$slug'
     | '/order-success/$id'
     | '/order-tracking/$id'
     | '/product/$slug'
     | '/account/'
+    | '/blog/'
     | '/order-tracking/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRouteWithChildren
   BestSellersRoute: typeof BestSellersRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   CompareRoute: typeof CompareRoute
+  ContactRoute: typeof ContactRoute
+  DeliveryPolicyRoute: typeof DeliveryPolicyRoute
+  FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
   LoginRoute: typeof LoginRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   NewCollectionRoute: typeof NewCollectionRoute
   OffersRoute: typeof OffersRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RegisterRoute: typeof RegisterRoute
+  ReturnPolicyRoute: typeof ReturnPolicyRoute
+  ReviewsRoute: typeof ReviewsRoute
   SearchRoute: typeof SearchRoute
   ShopRoute: typeof ShopRoute
+  TermsRoute: typeof TermsRoute
   WishlistRoute: typeof WishlistRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   OrderSuccessIdRoute: typeof OrderSuccessIdRoute
   OrderTrackingIdRoute: typeof OrderTrackingIdRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   OrderTrackingIndexRoute: typeof OrderTrackingIndexRoute
 }
 
@@ -354,6 +497,13 @@ declare module '@tanstack/react-router' {
       path: '/wishlist'
       fullPath: '/wishlist'
       preLoaderRoute: typeof WishlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -370,11 +520,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/return-policy': {
+      id: '/return-policy'
+      path: '/return-policy'
+      fullPath: '/return-policy'
+      preLoaderRoute: typeof ReturnPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offers': {
@@ -403,6 +574,34 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delivery-policy': {
+      id: '/delivery-policy'
+      path: '/delivery-policy'
+      fullPath: '/delivery-policy'
+      preLoaderRoute: typeof DeliveryPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare': {
@@ -440,6 +639,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -452,6 +658,13 @@ declare module '@tanstack/react-router' {
       path: '/order-tracking'
       fullPath: '/order-tracking/'
       preLoaderRoute: typeof OrderTrackingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account/': {
@@ -487,6 +700,13 @@ declare module '@tanstack/react-router' {
       path: '/collections/$slug'
       fullPath: '/collections/$slug'
       preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account/wishlist': {
@@ -550,23 +770,34 @@ const AccountRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AccountRoute: AccountRouteWithChildren,
   BestSellersRoute: BestSellersRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   CompareRoute: CompareRoute,
+  ContactRoute: ContactRoute,
+  DeliveryPolicyRoute: DeliveryPolicyRoute,
+  FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
   LoginRoute: LoginRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   NewCollectionRoute: NewCollectionRoute,
   OffersRoute: OffersRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   RegisterRoute: RegisterRoute,
+  ReturnPolicyRoute: ReturnPolicyRoute,
+  ReviewsRoute: ReviewsRoute,
   SearchRoute: SearchRoute,
   ShopRoute: ShopRoute,
+  TermsRoute: TermsRoute,
   WishlistRoute: WishlistRoute,
+  BlogSlugRoute: BlogSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   OrderSuccessIdRoute: OrderSuccessIdRoute,
   OrderTrackingIdRoute: OrderTrackingIdRoute,
   ProductSlugRoute: ProductSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   OrderTrackingIndexRoute: OrderTrackingIndexRoute,
 }
 export const routeTree = rootRouteImport
