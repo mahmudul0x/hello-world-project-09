@@ -1,8 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Facebook, Heart, Menu, MessageCircle, Phone, Search, ShoppingBag, X } from "lucide-react";
+import {
+  Facebook, GitCompare, Heart, Menu, MessageCircle, Phone, Search,
+  ShoppingBag, User, X,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { MiniCart } from "@/components/shop/MiniCart";
+import { useShop } from "@/lib/shop/store";
+import { useAuth } from "@/lib/shop/auth";
+import { bnNum } from "@/lib/products";
 
 const navLinks = [
   { label: "হোম", to: "/" },
@@ -16,6 +23,8 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { cartCount, wishlistCount, compare, openSearch, hydrated } = useShop();
+  const { user } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,8 +35,6 @@ export function Navbar() {
 
   return (
     <>
-
-
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -66,19 +73,68 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-1">
-            <IconBtn label="খুঁজুন"><Search size={18} /></IconBtn>
-            <IconBtn label="উইশলিস্ট" className="hidden sm:inline-flex">
+            <button
+              onClick={openSearch}
+              aria-label="খুঁজুন"
+              className="relative grid h-11 w-11 place-items-center rounded-full text-foreground transition hover:bg-primary-soft hover:text-primary"
+            >
+              <Search size={18} />
+            </button>
+
+            {compare.length > 0 && (
+              <Link
+                to="/compare"
+                aria-label="তুলনা"
+                className="relative hidden h-11 w-11 place-items-center rounded-full text-foreground transition hover:bg-primary-soft hover:text-primary sm:grid"
+              >
+                <GitCompare size={17} />
+                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-dark px-1 text-[10px] font-semibold text-background">
+                  {bnNum(compare.length)}
+                </span>
+              </Link>
+            )}
+
+            <Link
+              to="/wishlist"
+              aria-label="উইশলিস্ট"
+              className="relative hidden h-11 w-11 place-items-center rounded-full text-foreground transition hover:bg-primary-soft hover:text-primary sm:grid"
+            >
               <Heart size={18} />
-              <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-gold px-1 text-[10px] font-semibold text-dark">
-                3
+              {hydrated && wishlistCount > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-gold px-1 text-[10px] font-semibold text-dark">
+                  {bnNum(wishlistCount)}
+                </span>
+              )}
+            </Link>
+
+            <MiniCart>
+              <span className="relative grid h-11 w-11 place-items-center rounded-full text-foreground transition hover:bg-primary-soft hover:text-primary">
+                <ShoppingBag size={18} />
+                <AnimatePresence>
+                  {hydrated && cartCount > 0 && (
+                    <motion.span
+                      key={cartCount}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      transition={{ type: "spring", damping: 12 }}
+                      className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-semibold text-primary-foreground"
+                    >
+                      {bnNum(cartCount)}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </span>
-            </IconBtn>
-            <IconBtn label="কার্ট">
-              <ShoppingBag size={18} />
-              <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-semibold text-primary-foreground">
-                2
-              </span>
-            </IconBtn>
+            </MiniCart>
+
+            <Link
+              to={user ? "/account" : "/login"}
+              aria-label="অ্যাকাউন্ট"
+              className="relative hidden h-11 w-11 place-items-center rounded-full text-foreground transition hover:bg-primary-soft hover:text-primary sm:grid"
+            >
+              <User size={18} />
+            </Link>
+
             <div className="mx-1 hidden h-6 w-px bg-border md:block" />
             <a
               href="https://facebook.com/chayalux"
@@ -153,6 +209,13 @@ export function Navbar() {
                     {l.label}
                   </Link>
                 ))}
+                <div className="my-2 border-t border-border" />
+                <Link to="/wishlist" onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 text-base font-medium hover:bg-primary-soft hover:text-primary">উইশলিস্ট</Link>
+                <Link to="/compare" onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 text-base font-medium hover:bg-primary-soft hover:text-primary">তুলনা</Link>
+                <Link to={user ? "/account" : "/login"} onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 text-base font-medium hover:bg-primary-soft hover:text-primary">
+                  {user ? "আমার অ্যাকাউন্ট" : "লগইন / রেজিস্টার"}
+                </Link>
+                <Link to="/order-tracking" onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 text-base font-medium hover:bg-primary-soft hover:text-primary">অর্ডার ট্র্যাকিং</Link>
               </nav>
               <div className="mt-auto rounded-3xl bg-primary p-5 text-primary-foreground">
                 <div className="text-xs opacity-70">যোগাযোগ করুন</div>
@@ -164,27 +227,5 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-function IconBtn({
-  children,
-  label,
-  className,
-}: {
-  children: React.ReactNode;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <button
-      aria-label={label}
-      className={cn(
-        "relative grid h-11 w-11 place-items-center rounded-full text-foreground transition hover:bg-primary-soft hover:text-primary",
-        className,
-      )}
-    >
-      {children}
-    </button>
   );
 }
