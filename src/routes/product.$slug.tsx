@@ -17,6 +17,8 @@ import { ReviewCard } from "@/components/cards/ReviewCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { bnNum, bnPrice, getProduct, getRelated, REVIEWS_SEED } from "@/lib/products";
+import { useShop } from "@/lib/shop/store";
+import { useNavigate } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/product/$slug")({
